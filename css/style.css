@@ -69,7 +69,7 @@ nav a {
     font-family: var(--Abel);
     color: var(--text-gray);
     text-decoration: none; /* remove the underline */
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     text-transform: uppercase;
     padding: 0 2rem;
     border-radius: 5px;
@@ -86,6 +86,7 @@ nav a:hover {
 /* Social Icons */
 .social a {
     padding: .8rem;
+    font-size: 1.4rem;
 }
 
 /* Nav Toggle */
@@ -145,7 +146,7 @@ nav a:hover {
     }
     header {
         display: grid;
-        grid-template-columns: auto 1fr  minmax(600px,3fr) 1fr;
+        grid-template-columns: auto 1fr  minmax(500px,3fr) 1fr;
     }
     .logo { 
         grid-column: 1 / 2;
@@ -169,8 +170,32 @@ nav a:hover {
         opacity: 1;
         padding: 0 .3rem;
         position: relative;
+        color: var(--text-gray);
+    }
+    nav a:hover {
+        background-color: var(--white);
+        color:var(--text-light);
+    }
+    .social{
+        padding-left: 2rem;
     }
     .social a {
-        padding: .2rem;
+        padding: .3rem;
+    }
+    nav a::before{
+        content: ' ';
+        display: block;
+        height: 5px;
+        background: black;
+        position: absolute;
+        top: -.75em;
+        left: 0;
+        right: 0;
+        transform: scale(0,1);
+        transition: transform ease-in-out 250ms;
+    }
+    nav a:hover::before {
+        transform: scale(1,1);
+
     }
 }
