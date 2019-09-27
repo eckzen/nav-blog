@@ -51,7 +51,9 @@ nav {
     left: 0;
     background: var(--white);
     width: 100%;
-    display:none;
+    transform: scale(1,0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
 }
 
 nav ul {
@@ -71,6 +73,8 @@ nav a {
     text-transform: uppercase;
     padding: 0 2rem;
     border-radius: 5px;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
 }
 
 
@@ -84,9 +88,11 @@ nav a:hover {
     padding: .8rem;
 }
 
+/* Nav Toggle */
+
 .nav-toggle:checked ~ nav {
-    /* transform: scale(1,1); */
-    display:block;
+    transform: scale(1,1);
+    /* display:block; */
 }
 .nav-toggle:checked ~ nav a {
     opacity: 1;
@@ -129,4 +135,42 @@ nav a:hover {
 
 .nav-toggle-label span::after {
     top: 7px;
+}
+
+/* Media Query */
+
+@media screen and (min-width: 800px) {
+    .nav-toggle-label{
+        display: none;
+    }
+    header {
+        display: grid;
+        grid-template-columns: auto 1fr  minmax(600px,3fr) 1fr;
+    }
+    .logo { 
+        grid-column: 1 / 2;
+        padding-left : 2rem;
+    }
+    nav {
+        all: unset; /* taking off all the things up before on the nav */
+        grid-column: 2/4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    nav ul {
+        display: flex;
+    }
+    nav li {
+        /* margin-left: 3em; */
+        margin-bottom: 0;
+    }
+    nav a {
+        opacity: 1;
+        padding: 0 .3rem;
+        position: relative;
+    }
+    .social a {
+        padding: .2rem;
+    }
 }
